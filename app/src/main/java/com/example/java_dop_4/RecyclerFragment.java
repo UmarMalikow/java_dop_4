@@ -14,19 +14,15 @@ import androidx.fragment.app.FragmentResultListener;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Set;
 
 public class RecyclerFragment extends Fragment implements OnItemClickListener {
 
-    private BusinessRepository repository = new BusinessRepository();
+    private MyRepository repository = new MyRepository();
     private Button buttonAdd;
-    private List<BusinessModel> businessList;
-    private BusinessModel model;
-    private final BusinessAdapter adapter = new BusinessAdapter(this);
+    private List<MyModel> businessList;
+    private MyModel model;
+    private final MyAdapter adapter = new MyAdapter(this);
     private RecyclerView rvListOfName;
 
     @Override
@@ -72,7 +68,7 @@ public class RecyclerFragment extends Fragment implements OnItemClickListener {
     }
 
     @Override
-    public void onClick(BusinessModel model) {
+    public void onClick(MyModel model) {
         Bundle bundle = new Bundle();
         bundle.putSerializable("character", model);
         getParentFragmentManager().beginTransaction()
@@ -86,7 +82,7 @@ public class RecyclerFragment extends Fragment implements OnItemClickListener {
             @Override
             public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
                 if (requestKey.equals("OK")) {
-                    model = (BusinessModel) result.getSerializable("editBusinesmens");
+                    model = (MyModel) result.getSerializable("put");
                     businessList.add(model);
                     adapter.setData(businessList);
                 }

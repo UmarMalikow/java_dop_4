@@ -15,16 +15,16 @@ import com.google.android.material.card.MaterialCardView;
 
 import java.util.List;
 
-public class BusinessAdapter extends RecyclerView.Adapter<BusinessAdapter.CharacterViewHolder> implements View.OnClickListener {
+public class MyAdapter extends RecyclerView.Adapter<MyAdapter.CharacterViewHolder> implements View.OnClickListener {
 
-    private List<BusinessModel> listCharacters;
+    private List<MyModel> listCharacters;
     private final OnItemClickListener onItemClickListener;
 
-    public BusinessAdapter(OnItemClickListener onItemClickListener) {
+    public MyAdapter(OnItemClickListener onItemClickListener) {
         this.onItemClickListener = onItemClickListener;
     }
 
-    public void setData(List<BusinessModel> listCharacters) {
+    public void setData(List<MyModel> listCharacters) {
         this.listCharacters = listCharacters;
         notifyDataSetChanged();
     }
@@ -36,7 +36,7 @@ public class BusinessAdapter extends RecyclerView.Adapter<BusinessAdapter.Charac
     }
 
     @Override
-    public void onBindViewHolder(@NonNull BusinessAdapter.CharacterViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MyAdapter.CharacterViewHolder holder, int position) {
         holder.itemView.setOnClickListener(this);
         holder.onBind(listCharacters.get(position));
     }
@@ -48,7 +48,7 @@ public class BusinessAdapter extends RecyclerView.Adapter<BusinessAdapter.Charac
 
     @Override
     public void onClick(View view) {
-        onItemClickListener.onClick((BusinessModel) view.getTag());
+        onItemClickListener.onClick((MyModel) view.getTag());
     }
 
     public class CharacterViewHolder extends RecyclerView.ViewHolder {
@@ -66,7 +66,7 @@ public class BusinessAdapter extends RecyclerView.Adapter<BusinessAdapter.Charac
 
         }
 
-        public void onBind(BusinessModel character) {
+        public void onBind(MyModel character) {
             Glide.with(ivImage.getContext()).load(character.getImageUrl()).into(ivImage);
             tvName.setText(character.getName());
             tvAge.setText(String.valueOf(character.getAge()));

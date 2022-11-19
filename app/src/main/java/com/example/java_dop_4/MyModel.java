@@ -2,14 +2,14 @@ package com.example.java_dop_4;
 
 import java.io.Serializable;
 
-public class BusinessModel implements Serializable {
+public class MyModel implements Serializable {
 
     private String imageUrl;
     private String name;
     private int age;
     private String color;
 
-    public BusinessModel(String imageUrl, String name, int age, String color) {
+    public MyModel(String imageUrl, String name, int age, String color) {
         this.imageUrl = imageUrl;
         this.name = name;
         this.age = age;

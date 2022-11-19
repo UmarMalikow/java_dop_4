@@ -12,9 +12,9 @@ import androidx.fragment.app.Fragment;
 
 public class AddFragment extends Fragment {
 
-    private EditText imageViewCreate, editNameCreate, editAgeCreate;
+    private EditText imageCreate, editName, editAges;
     private Button buttonCreate;
-
+    
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -25,9 +25,9 @@ public class AddFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        imageViewCreate = view.findViewById(R.id.image_create);
-        editNameCreate = view.findViewById(R.id.et_name_create);
-        editAgeCreate = view.findViewById(R.id.et_age_create);
+        imageCreate = view.findViewById(R.id.image_create);
+        editName = view.findViewById(R.id.et_name_create);
+        editAges = view.findViewById(R.id.et_age_create);
         buttonCreate = view.findViewById(R.id.btn_create);
         onClick();
     }
@@ -36,23 +36,23 @@ public class AddFragment extends Fragment {
         buttonCreate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String imageCreateView = imageViewCreate.getText().toString().trim();
-                String nameCreateText = editNameCreate.getText().toString().trim();
-                String ageCreateText = editAgeCreate.getText().toString().trim();
+                String imageCreateView = imageCreate.getText().toString().trim();
+                String nameCreateText = editName.getText().toString().trim();
+                String ageCreateText = editAges.getText().toString().trim();
                 if (imageCreateView.isEmpty() && nameCreateText.isEmpty() && ageCreateText.isEmpty()) {
-                    editNameCreate.setError("Введите имя");
-                    imageViewCreate.setError("Введите ссылку");
-                    editAgeCreate.setError("Введите возраст");
+                    editName.setError("Введите имя");
+                    imageCreate.setError("Введите ссылку");
+                    editAges.setError("Введите возраст");
                 } else if (imageCreateView.isEmpty()) {
-                    imageViewCreate.setError("Введите ссылку");
+                    imageCreate.setError("Введите ссылку");
                 } else if (nameCreateText.isEmpty()) {
-                    editNameCreate.setError("Введите имя");
+                    editName.setError("Введите имя");
                 } else if (ageCreateText.isEmpty()) {
-                    editAgeCreate.setError("Введите возраст");
+                    editAges.setError("Введите возраст");
                 } else {
                     Bundle bundle = new Bundle();
-                    BusinessModel model  = new BusinessModel(imageCreateView,nameCreateText,Integer.parseInt(ageCreateText),"#36D375");
-                    bundle.putSerializable("editBusinesmens", model);
+                    MyModel model  = new MyModel(imageCreateView,nameCreateText,Integer.parseInt(ageCreateText),"#36D375");
+                    bundle.putSerializable("put", model);
                     getParentFragmentManager().setFragmentResult("OK",bundle);
                     getParentFragmentManager().popBackStack();
                 }
