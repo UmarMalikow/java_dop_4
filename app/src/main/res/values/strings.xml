@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">java_dop_4</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="create" />
+    <string name="url" />
+    <string name="url_image">url</string>
+    <string name="person_name">name</string>
+    <string name="age_person">age</string>
+</resources>
